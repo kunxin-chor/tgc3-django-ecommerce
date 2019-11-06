@@ -1,0 +1,22 @@
+{% extends 'base.template.html' %} {%block content %}
+
+
+    <a class='btn btn-primary mb-3 mt-3' href="{%url 'view_cart' %}">View Cart</a>
+    <br/>
+
+<div style='display:flex;justify-content:space-between'>
+
+    {%for product in all_products %}
+    <div class="card" style="width: 18rem;">
+        <img src="{{product.image.url}}" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text">{{product.description}}</p>
+            <a href="{% url 'add_to_cart' product_id=product.id %}" class="btn btn-primary">Add to cart</a>
+        </div>
+    </div>
+    {%endfor%}
+
+</div>
+
+{%endblock%}

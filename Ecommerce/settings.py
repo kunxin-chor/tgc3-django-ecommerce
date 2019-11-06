@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'accounts',
-    'shop'
+    'shop',
+    'cart'
 ]
 
 MIDDLEWARE = [
@@ -121,6 +122,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]
 
 # All this for using our own User class
 AUTH_USER_MODEL = 'accounts.MyUser'
@@ -134,3 +138,7 @@ AUTHENTICATION_BACKENDS = (
 LOGIN_URL = '/accounts/login'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# For files upload
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
