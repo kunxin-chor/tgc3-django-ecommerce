@@ -13,3 +13,20 @@ class Charge(models.Model):
 
     def __str__(self):
         return "{0}-{1}-{2}".format(self.id, self.date, self.full_name)
+        
+class Transaction(models.Model):
+    
+    status_options = [
+        ('pending', "Pending"),
+        ('approved', "Approved"),
+        ('rejected', "Rejected"),
+        ('shipping', 'Shipping'),
+        ('delivered', 'Delivered'),
+        ('lost', 'Lost')
+    ]
+    
+    charge = models.ForeignKey('Charge', on_delete=models.CASCADE)
+    status = models.CharField(blank=False, choices=status_options, max_length=50)
+    
+    def __str__(self):
+        return str(self.id)
